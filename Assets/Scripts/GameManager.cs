@@ -75,9 +75,6 @@ public class GameManager : MonoBehaviour
         }
         for (int i = 0; i < rooms.Count; i++)
         {
-            bool isMemeRoom = false;
-            if(memeRooms.Contains(i))
-                isMemeRoom = true;
             if(rnd.Next() % 2 == 0)
             {
                 rooms.Add(new room(removeName(true, rnd.Next(bNames.Count)), removeName(true, rnd.Next(bNames.Count)), removeName(true, rnd.Next(bNames.Count)), removeName(true, rnd.Next(bNames.Count)), (memeRooms.Contains(i)) ? rnd.Next(numRooms) : -1));
