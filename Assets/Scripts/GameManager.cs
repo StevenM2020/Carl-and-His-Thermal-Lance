@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     List<string> bNames = new List<string>();
     List<string> gNames = new List<string>();
-    List<room> rooms = new List<room>();
+    List<Room> rooms = new List<Room>();
 
     int numMemes = 4;
     int numRooms = 5;
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log(gNames[i]);
         }
-
+        SendDataToChildren();
     }
 
     // Update is called once per frame
@@ -46,8 +46,8 @@ public class GameManager : MonoBehaviour
             foreach (string line in lines)
             {
                 String[] name = line.Split(',');
-                
-                if (name[1] == "F")
+
+                if (name[1] == "F") // seperate gender
                     gNames.Add(name[0]);
                 else
                 {
@@ -55,54 +55,58 @@ public class GameManager : MonoBehaviour
 
                 }
             }
-                
-        }
 
-        System.Random rnd = new System.Random();
-        List<int> memeRooms = new List<int>();
-        for (int i = 0; i < numMemes; i++)
-        {
-            bool test = true;
-            while (test)
+
+
+            System.Random rnd = new System.Random();
+            List<int> memeRooms = new List<int>();
+            
+            //pick meme rooms
+            for (int i = 0; i < numMemes; i++)
             {
-                int num = rnd.Next(12);
-                if (!memeRooms.Contains(num))
+                bool test = true;
+                while (test) // test for multibles
                 {
-                    memeRooms.Add(num);
-                    test = false;
+                    int num = rnd.Next(12);
+                    if (!memeRooms.Contains(num))
+                    {
+                        memeRooms.Add(num);
+                        test = false;
+                    }
                 }
             }
-        }
-        for (int i = 0; i < rooms.Count; i++)
-        {
-            if(rnd.Next() % 2 == 0)
-            {
-                rooms.Add(new room(removeName(true, rnd.Next(bNames.Count)), removeName(true, rnd.Next(bNames.Count)), removeName(true, rnd.Next(bNames.Count)), removeName(true, rnd.Next(bNames.Count)), (memeRooms.Contains(i)) ? rnd.Next(numRooms) : -1));
-            }
-            else
-            {
-                rooms.Add(new room(removeName(false, rnd.Next(gNames.Count)), removeName(false, rnd.Next(gNames.Count)), removeName(false, rnd.Next(gNames.Count)), removeName(false, rnd.Next(gNames.Count)), (memeRooms.Contains(i)) ? rnd.Next(numRooms) : -1));
-            }
-            
-        }
 
+            // create room data
+            for (int i = 0; i < 12; i++)
+            {
+                if (rnd.Next() % 2 == 0)
+                {
+                    rooms.Add(new Room(RemoveName(true, rnd.Next(bNames.Count)), RemoveName(true, rnd.Next(bNames.Count)), RemoveName(true, rnd.Next(bNames.Count)), RemoveName(true, rnd.Next(bNames.Count)), memeRooms.Contains(i) ? rnd.Next(numRooms) : -1));
+                }
+                else
+                {
+                    rooms.Add(new Room(RemoveName(false, rnd.Next(gNames.Count)), RemoveName(false, rnd.Next(gNames.Count)), RemoveName(false, rnd.Next(gNames.Count)), RemoveName(false, rnd.Next(gNames.Count)), memeRooms.Contains(i) ? rnd.Next(numRooms) : -1));
+                }
+
+            }
+            //Debug.Log(rooms[0].newNames[0]);
+        }
+        
     }
-    class room
+     class Room
     {
         public string[] names;
         public int memeLocation;
         public int memeNum;
-        public room(string name1, string name2, string name3, string name4, int newMemeLocation)
+        public Room(string name1, string name2, string name3, string name4, int newMemeLocation)
         {
-            string[] names = new string[4];
-            names[0] = name1;
-            names[1] = name2;
-            names[2] = name3;
-            names[3] = name4;
+            names = new string[4] {name1,name2, name3, name4};
             memeLocation = newMemeLocation;
+            memeNum = 1;
         }
     }
-    public string removeName(bool M, int num)
+
+    public string RemoveName(bool M, int num) // return the name and remove from list
     {
         string name;
         if (M)
@@ -116,5 +120,15 @@ public class GameManager : MonoBehaviour
             gNames.RemoveAt(num);
         }
         return name;
+    }
+
+    public void SendDataToChildren() // send data to the room creators
+    {
+        for (int i = 0; i < 12; i++)
+        {
+
+        }
+        //Debug.Log(rooms[0].names[0]);
+        transform.Find("RoomController").gameObject.GetComponent<RoomController>().CreateRoom(rooms[0].names[0], rooms[0].names[1], rooms[0].names[2], rooms[0].names[3], rooms[0].memeLocation, rooms[0].memeNum);
     }
 }
