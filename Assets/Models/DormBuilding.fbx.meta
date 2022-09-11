@@ -3,7 +3,82 @@ guid: c78e69c9a56bd5e4ebe27de2b97fe6af
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Angelim 02
+    second: {fileID: 2100000, guid: acac2d2b87652c849977c2503b834e28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Angelim 03
+    second: {fileID: 2100000, guid: bd8a6f66a52d54e428800909da47816c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Angelim 04.001
+    second: {fileID: 2100000, guid: ae886caf65c739a46a4794a0c0f5e5d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carpet 01
+    second: {fileID: 2100000, guid: 1847c7748305e1a488e8212dce277863, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #3.001
+    second: {fileID: 2100000, guid: ce16b08a639458f4e94268ef2b5e816d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.006
+    second: {fileID: 2100000, guid: 8068e74c5c1b11e47a8cda6511609f3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal scratched
+    second: {fileID: 2100000, guid: 52367f78f14997448bba31c3ab2c10d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plaster white_
+    second: {fileID: 2100000, guid: 9eb5b039d865ca4469e3be8438cb6745, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red metal plates
+    second: {fileID: 2100000, guid: 3b1f53fc4e1f6b74e86117131215df3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rubber Floor
+    second: {fileID: 2100000, guid: 293718bfee9c9ce41bf333aa220bed2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 839eb16dceb359044884e817b94e21d3, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Fabric_carpet_01_metallic
+    second: {fileID: 2800000, guid: 1646125a687896f408d16ac29820c7ba, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MetalPanelRectangularRivets001_NRM_4K_SPECULAR
+    second: {fileID: 2800000, guid: 39af9ed386f93d244b0b932882c12bc4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wood063_2K_Color
+    second: {fileID: 2800000, guid: d9e1cb6e261f6c04cbb84a35ae116241, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wood063_2K_Roughness
+    second: {fileID: 2800000, guid: b6884d7cb4c712c4681f9062e50a464f, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
