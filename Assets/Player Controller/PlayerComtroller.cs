@@ -45,6 +45,8 @@ public class PlayerComtroller : MonoBehaviour
             {
                 Jump();
             }
+
+            //dash function here
         }
         else
         {
