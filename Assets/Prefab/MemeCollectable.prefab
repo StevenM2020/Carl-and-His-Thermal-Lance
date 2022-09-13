@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 1494129430908158297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.05}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1494129432533365821}
   m_RootOrder: 0
@@ -130,7 +130,7 @@ RectTransform:
   m_GameObject: {fileID: 1494129431731210710}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.095}
+  m_LocalScale: {x: 2, y: 2, z: 0.095}
   m_Children: []
   m_Father: {fileID: 1494129432533365821}
   m_RootOrder: 2
@@ -226,7 +226,7 @@ RectTransform:
   m_GameObject: {fileID: 1494129431958078573}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0.05}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1494129432533365821}
   m_RootOrder: 1
@@ -421,5 +421,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07420c094737f97458866309e61ba110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideMeme1: {fileID: 0}
-  sideMeme2: {fileID: 0}
+  sideMeme1: {fileID: 1494129430908158297}
+  sideMeme2: {fileID: 1494129431958078573}

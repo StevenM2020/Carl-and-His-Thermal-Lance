@@ -8,6 +8,7 @@ public class RoomController : MonoBehaviour
 {
     Room myRoom;
     public GameObject nameText;
+    public GameObject memePrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +32,14 @@ public class RoomController : MonoBehaviour
             roomText.transform.position = roomText.transform.position + Vector3.down*4*i;
         }
 
-        //transform.GetChild(0).gameObject.GetComponent
-        
+        if (newMemeLocation >= 0)
+        {
+            //transform.GetChild(0).gameObject.GetComponent
+            GameObject meme = Instantiate(memePrefab);
+            meme.GetComponent<MemeCollectable>().SetMemes(mat, newMemeNum);
+            Debug.Log(newMemeLocation);
+            meme.transform.position = transform.GetChild(newMemeLocation).gameObject.transform.position;
+        }
     }
 
 
