@@ -9,6 +9,7 @@ public class RoomController : MonoBehaviour
     Room myRoom;
     public GameObject nameText;
     public GameObject memePrefab;
+    public GameObject textLocation;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,7 @@ public class RoomController : MonoBehaviour
         {
             GameObject roomText = Instantiate(nameText);
             roomText.GetComponent<TextMeshPro>().text = myRoom.names[i];
-            roomText.transform.position = roomText.transform.position + Vector3.down*4*i;
+            roomText.transform.position = textLocation.transform.position + Vector3.down*4*i;
         }
 
         if (newMemeLocation >= 0)
