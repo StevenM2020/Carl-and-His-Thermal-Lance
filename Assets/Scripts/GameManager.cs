@@ -181,6 +181,12 @@ public class GameManager : MonoBehaviour
     }
     public void collectedMeme(int memeNum)
     {
-
+        foreach (Room room in rooms)
+        {
+            if(room.memeNum == memeNum)
+            {
+                room.obj.transform.GetChild(3).gameObject.SetActive(true);
+            }
+        }
     }
 }
