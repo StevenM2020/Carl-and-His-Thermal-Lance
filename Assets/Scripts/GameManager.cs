@@ -129,6 +129,10 @@ public class GameManager : MonoBehaviour
 
         }
         //Debug.Log(rooms[0].names[0]);
-        transform.Find("RoomController").gameObject.GetComponent<RoomController>().CreateRoom(rooms[0].names[0], rooms[0].names[1], rooms[0].names[2], rooms[0].names[3], rooms[0].memeLocation, rooms[0].memeNum);
+        //transform.Find("RoomController").gameObject.GetComponent<RoomController>().CreateRoom(rooms[0].names[0], rooms[0].names[1], rooms[0].names[2], rooms[0].names[3], rooms[0].memeLocation, rooms[0].memeNum);
+    }
+    public void collectedMeme(int memeNum)
+    {
+
     }
 }
