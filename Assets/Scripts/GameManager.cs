@@ -11,13 +11,25 @@ using System.Text;
 
 public class GameManager : MonoBehaviour
 {
-
+    private static GameManager instance;
     List<string> bNames = new List<string>();
     List<string> gNames = new List<string>();
     List<Room> rooms = new List<Room>();
 
     int numMemes = 4;
     int numRooms = 5;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new GameManager();
+            }
+
+            return instance;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -126,10 +138,10 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 12; i++)
         {
-
+            GetComponentInChildren<RoomController>().CreateRoom(rooms[0].names[0], rooms[0].names[1], rooms[0].names[2], rooms[0].names[3], rooms[0].memeLocation, rooms[0].memeNum);
         }
         //Debug.Log(rooms[0].names[0]);
-        //transform.Find("RoomController").gameObject.GetComponent<RoomController>().CreateRoom(rooms[0].names[0], rooms[0].names[1], rooms[0].names[2], rooms[0].names[3], rooms[0].memeLocation, rooms[0].memeNum);
+       
     }
     public void collectedMeme(int memeNum)
     {
