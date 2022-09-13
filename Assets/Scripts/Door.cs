@@ -13,8 +13,7 @@ public class Door : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("start");
-        StartCoroutine(cutDoor());
+
     }
 
     // Update is called once per frame
@@ -29,19 +28,20 @@ public class Door : MonoBehaviour
         {
             StartCoroutine(cutDoor());
             isDoorOpen = true;
+            //pause player movement
         }
     }
 
     IEnumerator cutDoor()
     {
 
-        Debug.Log("start1");
+
         yield return new WaitForSeconds(waitTime);
         sparksObject.SetActive(true);
         GetComponent<Animator>().enabled = true;
-        Debug.Log("start2");
+
         yield return new WaitForSeconds(openDoorTime);
         stopPlayerCube.SetActive(false);
-        Debug.Log("start3");
+
     }
 }
