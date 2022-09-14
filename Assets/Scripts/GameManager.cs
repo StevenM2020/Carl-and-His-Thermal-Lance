@@ -115,7 +115,9 @@ public class GameManager : MonoBehaviour
                 {
                     GameObject memeObjective = Instantiate(memeObjectivePrefab);
                     memeObjective.transform.SetParent(snapchat.transform);
-                    memeObjective.transform.position = new Vector2(900 ,490 - 115*num1);
+                    memeObjective.transform.position = snapchat.transform.position;
+                    memeObjective.transform.position = new Vector2(memeObjective.transform.position.x - 90, 495 - 117*num1);
+                    
                     rooms[i].obj = memeObjective;
                     rooms[i].memeSetUp(sprites[meme], rnd.Next(4));
                     num1++;
