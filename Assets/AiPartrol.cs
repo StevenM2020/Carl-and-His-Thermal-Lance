@@ -32,10 +32,11 @@ public class AiPartrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(transform.position, target) < 1)
+        if(Vector3.Distance(transform.position, target) < 6)
         {
             IterateWaypointIndex();
             UpdateDestination();
+            Debug.Log("update");
         }
         else if (spotted.canSeePlayer)
         {
@@ -43,17 +44,23 @@ public class AiPartrol : MonoBehaviour
           agent.speed = 300;
           agent.acceleration = 300;
           agent.SetDestination(target);
+            Debug.Log("me1");
         }
-        else if (!spotted.canSeePlayer)
+        
+        if (!spotted.canSeePlayer)
         {
             agent.speed = agentSpeed;
             agent.acceleration = agentAcceleration;
+            Debug.Log(Vector3.Distance(transform.position, target));
         }
         else
+        {
             UpdateDestination();
+            Debug.Log("me3");
+        }
+            
 
-        if (foundPlayer)
-            Debug.Log("OOF");
+        
 
 
 
