@@ -191,7 +191,7 @@ public class GameManager : MonoBehaviour
                 intMemesCollected++;
                 if(intMemesCollected == 4)
                 {
-                    SceneManager.LoadScene("winscene");
+                    SceneManager.LoadScene("Win Screen");
                 }
             }
         }
