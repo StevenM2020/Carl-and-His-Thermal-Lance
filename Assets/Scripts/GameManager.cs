@@ -8,16 +8,37 @@ using UnityEngine;
 using System;
 using System.IO;
 using System.Text;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-
+    private static GameManager instance;
     List<string> bNames = new List<string>();
     List<string> gNames = new List<string>();
     List<Room> rooms = new List<Room>();
+    List<GameObject> objectives = new List<GameObject>();
+    public List<Material> mats = new List<Material>();
+    public List<Sprite> sprites = new List<Sprite>();
+
+    public GameObject memeObjectivePrefab;
+    public GameObject snapchat;
 
     int numMemes = 4;
+    int numMemeFiles = 21;
     int numRooms = 5;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new GameManager();
+            }
+
+            return instance;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -75,19 +96,28 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-
+            int num1 = 0;
             // create room data
             for (int i = 0; i < 12; i++)
             {
+                int meme = rnd.Next(mats.Count);
                 if (rnd.Next() % 2 == 0)
                 {
-                    rooms.Add(new Room(RemoveName(true, rnd.Next(bNames.Count)), RemoveName(true, rnd.Next(bNames.Count)), RemoveName(true, rnd.Next(bNames.Count)), RemoveName(true, rnd.Next(bNames.Count)), memeRooms.Contains(i) ? rnd.Next(numRooms) : -1));
+                    rooms.Add(new Room(RemoveName(true, rnd.Next(bNames.Count)), RemoveName(true, rnd.Next(bNames.Count)), RemoveName(true, rnd.Next(bNames.Count)), RemoveName(true, rnd.Next(bNames.Count)), memeRooms.Contains(i) ? rnd.Next(numRooms) : -1,i,  mats[meme] ));
                 }
                 else
                 {
-                    rooms.Add(new Room(RemoveName(false, rnd.Next(gNames.Count)), RemoveName(false, rnd.Next(gNames.Count)), RemoveName(false, rnd.Next(gNames.Count)), RemoveName(false, rnd.Next(gNames.Count)), memeRooms.Contains(i) ? rnd.Next(numRooms) : -1));
+                    rooms.Add(new Room(RemoveName(false, rnd.Next(gNames.Count)), RemoveName(false, rnd.Next(gNames.Count)), RemoveName(false, rnd.Next(gNames.Count)), RemoveName(false, rnd.Next(gNames.Count)), memeRooms.Contains(i) ? rnd.Next(numRooms) : -1, i, mats[meme]));
                 }
-
+                if (memeRooms.Contains(i))
+                {
+                    GameObject memeObjective = Instantiate(memeObjectivePrefab);
+                    memeObjective.transform.SetParent(snapchat.transform);
+                    memeObjective.transform.position = new Vector2(900 ,490 - 115*num1);
+                    rooms[i].obj = memeObjective;
+                    rooms[i].memeSetUp(sprites[meme], rnd.Next(4));
+                    num1++;
+                }
             }
             //Debug.Log(rooms[0].newNames[0]);
         }
@@ -98,11 +128,22 @@ public class GameManager : MonoBehaviour
         public string[] names;
         public int memeLocation;
         public int memeNum;
-        public Room(string name1, string name2, string name3, string name4, int newMemeLocation)
+        //public int intMemeFile;
+        public Material mat;
+        public GameObject obj;
+        public Room(string name1, string name2, string name3, string name4, int newMemeLocation, int intMeme, Material newMat)
         {
-            names = new string[4] {name1,name2, name3, name4};
+            names = new string[4] { name1, name2, name3, name4 };
             memeLocation = newMemeLocation;
-            memeNum = 1;
+            memeNum = intMeme;
+            mat = newMat;
+
+        }
+        public void memeSetUp(Sprite sprite, int num)
+        {
+            obj.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+            //Debug.Log(obj.transform.GetChild(2).name);
+            obj.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = names[num];
         }
     }
 
@@ -124,11 +165,28 @@ public class GameManager : MonoBehaviour
 
     public void SendDataToChildren() // send data to the room creators
     {
-        for (int i = 0; i < 12; i++)
-        {
 
+
+        //GetComponentInChildren<RoomController>().CreateRoom(rooms[0].names[0], rooms[0].names[1], rooms[0].names[2], rooms[0].names[3], rooms[0].memeLocation, rooms[0].memeNum);
+
+        int i = 0;
+        foreach (Transform child in transform)
+        {
+            Debug.Log(child.name);
+            child.GetComponent<RoomController>().CreateRoom(rooms[i].names[0], rooms[i].names[1], rooms[i].names[2], rooms[i].names[3], rooms[i].memeLocation, rooms[i].memeNum, rooms[i].mat);
+            i++;
         }
         //Debug.Log(rooms[0].names[0]);
-        transform.Find("RoomController").gameObject.GetComponent<RoomController>().CreateRoom(rooms[0].names[0], rooms[0].names[1], rooms[0].names[2], rooms[0].names[3], rooms[0].memeLocation, rooms[0].memeNum);
+
+    }
+    public void collectedMeme(int memeNum)
+    {
+        foreach (Room room in rooms)
+        {
+            if(room.memeNum == memeNum)
+            {
+                room.obj.transform.GetChild(3).gameObject.SetActive(true);
+            }
+        }
     }
 }
