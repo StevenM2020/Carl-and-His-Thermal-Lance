@@ -10,6 +10,7 @@ using System.IO;
 using System.Text;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     int numMemes = 4;
     int numMemeFiles = 21;
     int numRooms = 5;
+    int intMemesCollected = 0;
     public static GameManager Instance
     {
         get
@@ -186,6 +188,11 @@ public class GameManager : MonoBehaviour
             if(room.memeNum == memeNum)
             {
                 room.obj.transform.GetChild(3).gameObject.SetActive(true);
+                intMemesCollected++;
+                if(intMemesCollected == 4)
+                {
+                    SceneManager.LoadScene("Win Screen");
+                }
             }
         }
     }
