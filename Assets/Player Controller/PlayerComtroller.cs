@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerComtroller : MonoBehaviour
 {
+    private bool pause = false;
     [SerializeField] private MoveSettings _settings = null;
 
     private Vector3 _moveDirection;
@@ -16,7 +17,8 @@ public class PlayerComtroller : MonoBehaviour
 
     private void Update()
     {
-        DefaultMovement();
+        if(!pause)
+            DefaultMovement();
     }
 
     private void FixedUpdate()
@@ -57,5 +59,19 @@ public class PlayerComtroller : MonoBehaviour
     private void Jump()
     {
         _moveDirection.y += _settings.jumpForce;
+    }
+
+    public void pausePlayer(float doorTime)
+    {
+        pause = true;
+        StartCoroutine(cutDoor(doorTime));
+    }
+    IEnumerator cutDoor(float doorTime)
+    {
+
+
+        yield return new WaitForSeconds(doorTime);
+        pause = false;
+
     }
 }
