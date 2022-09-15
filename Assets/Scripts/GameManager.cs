@@ -186,27 +186,27 @@ public class GameManager : MonoBehaviour
     }
     public void collectedMeme(int memeNum)
     {
-        Debug.Log("1");
+        //Debug.Log("1");
         intMemesCollected++;
-        for (int i = 0; i < 12; i++)
+       // for (int i = 0; i < 12; i++)
        // foreach (Room room in rooms)
-        {
-            Debug.Log("2");
-            Debug.Log(rooms[i].memeNum);
-            if (rooms[i].memeNum == memeNum)
-            {
-                Debug.Log("3");
-        if (!(rooms[i].obj.transform.GetChild(3).gameObject == null))
-            rooms[i].obj.transform.GetChild(3).gameObject.SetActive(true);
-        else
-            Debug.Log("null");
+        //{
+          //  Debug.Log("2");
+          //  Debug.Log(rooms[i].memeNum);
+          //  if (rooms[i].memeNum == memeNum)
+          //  {
+         //       Debug.Log("3");
+       // if (!(rooms[i].obj.transform.GetChild(3).gameObject == null))
+        //    rooms[i].obj.transform.GetChild(3).gameObject.SetActive(true);
+       // else
+         //   Debug.Log("null");
                 
-                Debug.Log("num of meme: " + memeNum);
+              //  Debug.Log("num of meme: " + memeNum);
                 if (intMemesCollected >= 4)
                 {
                     SceneManager.LoadScene("Win Screen");
                 }
-           }
-        }
+          // }
+       // }
     }
 }

@@ -6,6 +6,8 @@ public class PlayerComtroller : MonoBehaviour
 {
     private bool pause = false;
     public GameObject lance;
+    public GameObject notifications;
+    private bool blnNote = false;
     [SerializeField] private MoveSettings _settings = null;
 
     private Vector3 _moveDirection;
@@ -15,7 +17,10 @@ public class PlayerComtroller : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
     }
-
+    private void Start()
+    {
+        StartCoroutine(noteTime());
+    }
     private void Update()
     {
         if(!pause)
@@ -37,6 +42,8 @@ public class PlayerComtroller : MonoBehaviour
             if (input.x != 0 && input.y != 0)
             {
                 input *= 0.777f;
+                if (blnNote)
+                    notifications.SetActive(false);
             }
 
             _moveDirection.x = input.x * _settings.speed;
@@ -48,6 +55,8 @@ public class PlayerComtroller : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 Jump();
+                if (blnNote)
+                    notifications.SetActive(false);
             }
 
             //dash function here
@@ -78,6 +87,12 @@ public class PlayerComtroller : MonoBehaviour
         yield return new WaitForSeconds(doorTime);
         pause = false;
         lance.SetActive(true);
+
+    }
+    IEnumerator noteTime()
+    {
+        yield return new WaitForSeconds(1.5f);
+        blnNote = true;
 
     }
 }
