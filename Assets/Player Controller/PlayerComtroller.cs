@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerComtroller : MonoBehaviour
 {
     private bool pause = false;
+    public GameObject lance;
     [SerializeField] private MoveSettings _settings = null;
 
     private Vector3 _moveDirection;
@@ -23,7 +24,8 @@ public class PlayerComtroller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _controller.Move(_moveDirection * Time.deltaTime);
+        if (!pause)
+            _controller.Move(_moveDirection * Time.deltaTime);
     }
 
     private void DefaultMovement()
@@ -63,15 +65,19 @@ public class PlayerComtroller : MonoBehaviour
 
     public void pausePlayer(float doorTime)
     {
-        pause = true;
+        
+        
         StartCoroutine(cutDoor(doorTime));
     }
     IEnumerator cutDoor(float doorTime)
     {
-
-
+        yield return new WaitForSeconds(.5f);
+        pause = true;
+        yield return new WaitForSeconds(2.2f);
+        lance.SetActive(false);
         yield return new WaitForSeconds(doorTime);
         pause = false;
+        lance.SetActive(true);
 
     }
 }

@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     int numMemes = 4;
     int numMemeFiles = 21;
-    int numRooms = 5;
+    int numRooms = 4;
     int intMemesCollected = 0;
     public static GameManager Instance
     {
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
             //Debug.Log(gNames[i]);
         }
         SendDataToChildren();
+        Debug.Log("room count" + rooms.Count);
     }
 
     // Update is called once per frame
@@ -188,21 +189,24 @@ public class GameManager : MonoBehaviour
         Debug.Log("1");
         intMemesCollected++;
         for (int i = 0; i < 12; i++)
-        //foreach (Room room in rooms)
+       // foreach (Room room in rooms)
         {
             Debug.Log("2");
-            //Debug.Log(rooms[i].memeNum);
-            //if (rooms[i].memeNum == memeNum)
-            //{
+            Debug.Log(rooms[i].memeNum);
+            if (rooms[i].memeNum == memeNum)
+            {
                 Debug.Log("3");
-                //rooms[i].obj.transform.GetChild(3).gameObject.SetActive(true);
+        if (!(rooms[i].obj.transform.GetChild(3).gameObject == null))
+            rooms[i].obj.transform.GetChild(3).gameObject.SetActive(true);
+        else
+            Debug.Log("null");
                 
                 Debug.Log("num of meme: " + memeNum);
                 if (intMemesCollected >= 4)
                 {
                     SceneManager.LoadScene("Win Screen");
                 }
-           // }
+           }
         }
     }
 }
