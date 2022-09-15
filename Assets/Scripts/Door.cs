@@ -6,8 +6,9 @@ public class Door : MonoBehaviour
 {
     public GameObject stopPlayerCube;
     public GameObject sparksObject;
-    private float waitTime = 10;
+    private float waitTime = 3;
     private float openDoorTime = 2.5f;
+    private float sparksTime = 2f;
     private bool isDoorOpen = false;
     
     // Start is called before the first frame update
@@ -28,7 +29,10 @@ public class Door : MonoBehaviour
         {
             StartCoroutine(cutDoor());
             isDoorOpen = true;
-            //pause player movement
+            if(GameObject.Find("Carl").GetComponent<PlayerComtroller>() != null)
+            {
+                GameObject.Find("Carl").GetComponent<PlayerComtroller>().pausePlayer(waitTime + openDoorTime + sparksTime);
+            }
         }
     }
 
@@ -38,6 +42,7 @@ public class Door : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
         sparksObject.SetActive(true);
+        yield return new WaitForSeconds(sparksTime);
         GetComponent<Animator>().enabled = true;
 
         yield return new WaitForSeconds(openDoorTime);
