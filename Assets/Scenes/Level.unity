@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: ee37026a4f1921e469154e9b62d3d5b9
+  m_OcclusionCullingData: {fileID: 36300000, guid: bc7cc15fcb176c0459a8725cef3864a6, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427182, b: 0.5645241, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -320,6 +320,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8552134717624371188, guid: c78e69c9a56bd5e4ebe27de2b97fe6af, type: 3}
+--- !u!1 &1032151292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6464625724475656075, guid: a3163a7ce549f4f4f974062cf8969b14, type: 3}
+  m_PrefabInstance: {fileID: 264765138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1166617875 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6806513628289163923, guid: da69e0de6adc81442858c68c0eeebaeb, type: 3}
@@ -362,6 +367,10 @@ PrefabInstance:
       propertyPath: m_StepOffset
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 599700309621780259, guid: cd1b72508ba5ddb4a94faabdd99ff67b, type: 3}
+      propertyPath: notifications
+      value: 
+      objectReference: {fileID: 1032151292}
     - target: {fileID: 599700309621780260, guid: cd1b72508ba5ddb4a94faabdd99ff67b, type: 3}
       propertyPath: m_RootOrder
       value: 2
