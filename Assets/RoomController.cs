@@ -28,9 +28,16 @@ public class RoomController : MonoBehaviour
         Room myRoom = new Room(name1, name2, name3, name4, newMemeLocation, newMemeNum, mat);
         for( int i = 0; i < 4; i++)
         {
+            
             GameObject roomText = Instantiate(nameText);
+            
             roomText.GetComponent<TextMeshPro>().text = myRoom.names[i];
             roomText.transform.position = textLocation.transform.position + Vector3.down*4*i;
+            if(roomText.transform.position.z > 1)
+            {
+                roomText.transform.Rotate(0, 180, 0);
+            }
+ 
         }
 
         if (newMemeLocation >= 0)

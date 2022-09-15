@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
    public void PlayGame()
     {
-        SceneManager.LoadScene("LoseScreen");
+        SceneManager.LoadScene("Level");
         Debug.Log("Play");
     }
 

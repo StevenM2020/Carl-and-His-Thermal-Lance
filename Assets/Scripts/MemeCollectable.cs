@@ -26,7 +26,7 @@ public class MemeCollectable : MonoBehaviour
     }
      private void OnTriggerEnter(Collider collision)
     {
-        if (collision.name == "player" )
+        if (collision.name == "Carl" )
         {
             Debug.Log("player");
             GameManager.Instance.collectedMeme(memeNum);

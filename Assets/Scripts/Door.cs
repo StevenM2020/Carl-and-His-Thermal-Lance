@@ -24,7 +24,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "player" && isDoorOpen == false)
+        if (collision.gameObject.name == "Carl" && isDoorOpen == false)
         {
             StartCoroutine(cutDoor());
             isDoorOpen = true;

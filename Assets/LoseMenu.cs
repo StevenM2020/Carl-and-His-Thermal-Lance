@@ -10,6 +10,11 @@ public class LoseMenu : MonoBehaviour
         SceneManager.LoadScene("StartScreen");
         Debug.Log("menu");
     }
+    private void Start()
+    {
+        Cursor.lockState = 0;
+    }
+
 
     public void QuitGame()
     {

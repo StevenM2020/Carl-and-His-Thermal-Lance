@@ -36,7 +36,7 @@ public class AiPartrol : MonoBehaviour
         {
             IterateWaypointIndex();
             UpdateDestination();
-            Debug.Log("update");
+           // Debug.Log("update");
         }
         else if (spotted.canSeePlayer)
         {
@@ -44,14 +44,14 @@ public class AiPartrol : MonoBehaviour
           agent.speed = 300;
           agent.acceleration = 300;
           agent.SetDestination(target);
-            Debug.Log("me1");
+            //Debug.Log("me1");
         }
         
         if (!spotted.canSeePlayer)
         {
             agent.speed = agentSpeed;
             agent.acceleration = agentAcceleration;
-            Debug.Log(Vector3.Distance(transform.position, target));
+            //Debug.Log(Vector3.Distance(transform.position, target));
         }
         else
         {
