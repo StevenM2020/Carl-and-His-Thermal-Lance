@@ -896,5 +896,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7871718045493666141, guid: 75b1cab95a401c64e9e5a764262470fe, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871718045493666141, guid: 75b1cab95a401c64e9e5a764262470fe, type: 3}
+      propertyPath: MaxDistance
+      value: 32.47595
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871718045493666141, guid: 75b1cab95a401c64e9e5a764262470fe, type: 3}
+      propertyPath: MinDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871718045493666141, guid: 75b1cab95a401c64e9e5a764262470fe, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5924ed9101ebe2e47be0a938b9911888, type: 3}
+    - target: {fileID: 7871718045493666141, guid: 75b1cab95a401c64e9e5a764262470fe, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871718045493666141, guid: 75b1cab95a401c64e9e5a764262470fe, type: 3}
+      propertyPath: DopplerLevel
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871718045493666141, guid: 75b1cab95a401c64e9e5a764262470fe, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.63611114
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871718045493666141, guid: 75b1cab95a401c64e9e5a764262470fe, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75b1cab95a401c64e9e5a764262470fe, type: 3}
